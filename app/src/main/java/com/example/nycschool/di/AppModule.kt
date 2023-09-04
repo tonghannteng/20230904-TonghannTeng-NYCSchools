@@ -1,5 +1,7 @@
 package com.example.nycschool.di
 
+import com.example.nycschool.data.repository.ISchoolRepository
+import com.example.nycschool.data.repository.SchoolRepository
 import com.example.nycschool.service.ISchoolService
 import dagger.Module
 import dagger.Provides
@@ -25,6 +27,10 @@ class AppModule {
         .build()
         .create(ISchoolService::class.java)
 
+    @Provides
+    @Singleton
+    fun injectRepository(schoolService: ISchoolService) =
+        SchoolRepository(schoolService = schoolService) as ISchoolRepository
 
     companion object {
         const val BASE_URL = "https://data.cityofnewyork.us/"

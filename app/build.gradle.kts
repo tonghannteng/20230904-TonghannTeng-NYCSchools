@@ -74,7 +74,12 @@ dependencies {
     implementation(libs.google.dagger.hilt)
     kapt(libs.google.dagger.hilt.compiler)
 
+    implementation(libs.google.dagger.hilt.navigation.compose)
+
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
+
+    // NavHost
+    implementation(libs.androidx.navigation.compose)
 }

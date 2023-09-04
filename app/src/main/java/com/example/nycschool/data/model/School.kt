@@ -1,4 +1,4 @@
-package com.example.nycschool.model
+package com.example.nycschool.data.model
 
 /**
  * @author: tonghann.teng

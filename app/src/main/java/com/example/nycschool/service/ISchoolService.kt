@@ -1,7 +1,7 @@
 package com.example.nycschool.service
 
-import com.example.nycschool.model.School
-import retrofit2.Response
+import com.example.nycschool.data.model.School
+import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 
 /**
@@ -11,5 +11,5 @@ import retrofit2.http.GET
 interface ISchoolService {
 
     @GET("resource/s3k6-pzi2.json")
-    suspend fun getSchools(): Response<List<School>>
+    suspend fun getSchools(): List<School>
 }
