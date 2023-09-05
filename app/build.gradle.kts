@@ -72,9 +72,8 @@ dependencies {
 
     //dagger-hilt
     implementation(libs.google.dagger.hilt)
-    kapt(libs.google.dagger.hilt.compiler)
-
     implementation(libs.google.dagger.hilt.navigation.compose)
+    kapt(libs.google.dagger.hilt.compiler)
 
     // Retrofit
     implementation(libs.retrofit)
@@ -82,4 +81,11 @@ dependencies {
 
     // NavHost
     implementation(libs.androidx.navigation.compose)
+
+    // Mockito
+    testImplementation(libs.nhaarman.mockito.kotlin)
+    testImplementation(libs.mockito.inline)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
+
 }

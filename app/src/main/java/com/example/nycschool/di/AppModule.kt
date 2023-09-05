@@ -1,5 +1,7 @@
 package com.example.nycschool.di
 
+import com.example.nycschool.DefaultDispatcherProvider
+import com.example.nycschool.DispatcherProvider
 import com.example.nycschool.data.repository.ISchoolRepository
 import com.example.nycschool.data.repository.SchoolRepository
 import com.example.nycschool.service.ISchoolService
@@ -31,6 +33,10 @@ class AppModule {
     @Singleton
     fun injectRepository(schoolService: ISchoolService) =
         SchoolRepository(schoolService = schoolService) as ISchoolRepository
+
+    @Provides
+    fun provideDispatcher(dispatcherProvider: DefaultDispatcherProvider): DispatcherProvider =
+        dispatcherProvider
 
     companion object {
         const val BASE_URL = "https://data.cityofnewyork.us/"

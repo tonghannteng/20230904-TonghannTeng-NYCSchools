@@ -19,18 +19,14 @@ class SchoolRepository @Inject constructor(
 ) : ISchoolRepository {
 
     override suspend fun getSchools(): Flow<List<School>> {
-        return withContext(Dispatchers.IO) {
-            flow {
-                emit(schoolService.getSchools())
-            }
+        return flow {
+            emit(schoolService.getSchools())
         }
     }
 
     override suspend fun getSchoolDetail(dbn: String): Flow<List<SchoolDetail>> {
-        return withContext(Dispatchers.IO) {
-            flow {
-                emit(schoolService.getSchoolDetail(dbn = dbn))
-            }
+        return flow {
+            emit(schoolService.getSchoolDetail(dbn = dbn))
         }
     }
 }

@@ -3,7 +3,6 @@ package com.example.nycschool.ui
 /**
  * @author: tonghann.teng
  * @since: 9/5/2023
- *
  */
 sealed class UiState<T> {
     class Loading<T> : UiState<T>()

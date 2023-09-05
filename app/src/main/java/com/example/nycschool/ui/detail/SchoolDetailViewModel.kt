@@ -3,6 +3,7 @@ package com.example.nycschool.ui.detail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.nycschool.DispatcherProvider
 import com.example.nycschool.data.model.SchoolDetail
 import com.example.nycschool.data.repository.SchoolRepository
 import com.example.nycschool.navigation.Argument
@@ -11,6 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,6 +24,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SchoolDetailViewModel @Inject constructor(
     private val repository: SchoolRepository,
+    private val dispatcherProvider: DispatcherProvider,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -45,8 +48,9 @@ class SchoolDetailViewModel @Inject constructor(
      * Get school details list.
      */
     private fun getSchoolDetailList(dbn: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcherProvider.main()) {
             repository.getSchoolDetail(dbn = dbn)
+                .flowOn(dispatcherProvider.io())
                 .catch {
                     _schoolDetails.value = UiState.Error(it.toString())
                 }
