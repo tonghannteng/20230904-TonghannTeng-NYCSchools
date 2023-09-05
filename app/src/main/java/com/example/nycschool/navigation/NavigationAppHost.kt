@@ -1,45 +1,53 @@
 package com.example.nycschool.navigation
 
-import android.widget.Toast
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.nycschool.ui.detail.SchoolDetailScreen
-import com.example.nycschool.ui.detail.SchoolDetailViewModel
 import com.example.nycschool.ui.school.SchoolScreen
-import com.example.nycschool.ui.school.SchoolViewModel
 
+/**
+ * @author: tonghann.teng
+ * @since: 9/5/2023
+ *
+ */
 @Composable
 fun NavigationAppHost(
-    navController: NavHostController,
-    schoolViewModel: SchoolViewModel,
-    schoolDetailViewModel: SchoolDetailViewModel
+    navController: NavHostController
 ) {
-    val context = LocalContext.current
     NavHost(
         navController = navController,
-        startDestination = Destination.Home.route
+        startDestination = Route.HOME
     ) {
-        composable(Destination.Home.route) {
+        composable(Route.HOME) { backStackEntry ->
             SchoolScreen(
-                viewModel = schoolViewModel,
                 onItemClicked = { dbn ->
-                    navController.navigate(Destination.Details.createRoute(dbnId = dbn))
+                    navController.navigate("${Route.DETAIL}/$dbn")
                 }
             )
         }
-        composable(Destination.Details.route) { navBackStackEntry ->
-            val dbnId = navBackStackEntry.arguments?.getString("dbnId")
-            if (dbnId == null) {
-                Toast.makeText(context, "dbnId is required", Toast.LENGTH_SHORT).show()
-            } else {
-                SchoolDetailScreen(
-                    viewModel = schoolDetailViewModel,
-                    dbn = dbnId
-                )
-            }
+
+        composable(
+            route = "${Route.DETAIL}/{${Argument.DBN_ID}}",
+            arguments = listOf(
+                navArgument(Argument.DBN_ID) {
+                    type = NavType.StringType
+                })
+        ) {
+            SchoolDetailScreen()
         }
     }
+}
+
+object Route {
+    const val HOME = "home"
+    const val DETAIL = "detail"
+}
+
+object Argument {
+    const val DBN_ID = "dbnId"
 }

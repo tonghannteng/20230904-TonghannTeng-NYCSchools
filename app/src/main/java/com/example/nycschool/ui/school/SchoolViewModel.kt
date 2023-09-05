@@ -12,6 +12,11 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * @author: tonghann.teng
+ * @since: 9/5/2023
+ *
+ */
 @HiltViewModel
 class SchoolViewModel @Inject constructor(
     private val repository: SchoolRepository
@@ -28,6 +33,9 @@ class SchoolViewModel @Inject constructor(
         getSchoolList()
     }
 
+    /**
+     * Get school list.
+     */
     private fun getSchoolList() {
         viewModelScope.launch {
             repository.getSchools()
@@ -39,5 +47,4 @@ class SchoolViewModel @Inject constructor(
                 }
         }
     }
-
 }
