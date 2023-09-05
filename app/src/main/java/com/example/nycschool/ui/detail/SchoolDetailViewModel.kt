@@ -34,7 +34,9 @@ class SchoolDetailViewModel @Inject constructor(
     val schoolDetail = _schoolDetails.asStateFlow()
 
     init {
-        dbnId?.let {
+        if (dbnId.isNullOrEmpty()) {
+            _schoolDetails.value = UiState.Error("dbnId not found")
+        } else {
             getSchoolDetailList(dbn = dbnId)
         }
     }
@@ -49,7 +51,11 @@ class SchoolDetailViewModel @Inject constructor(
                     _schoolDetails.value = UiState.Error(it.toString())
                 }
                 .collect {
-                    _schoolDetails.value = UiState.Success(data = it)
+                    if (it.isEmpty()) {
+                        _schoolDetails.value = UiState.Error(error = "School Details is Empty")
+                    } else {
+                        _schoolDetails.value = UiState.Success(data = it)
+                    }
                 }
         }
     }

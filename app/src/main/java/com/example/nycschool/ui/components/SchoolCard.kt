@@ -32,11 +32,27 @@ fun SchoolCard(
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = school.dbn,
+                text = "DBN: ${school.dbn}",
                 style = MaterialTheme.typography.titleLarge,
             )
             Text(
-                text = school.school_name,
+                text = "School Name: ${school.school_name}",
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                text = "BORO:: ${school.boro}",
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                text = "Location: ${school.location}",
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                text = "Phone Number: ${school.phone_number}",
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                text = "School Email: ${school.school_email}",
                 style = MaterialTheme.typography.titleMedium,
             )
         }

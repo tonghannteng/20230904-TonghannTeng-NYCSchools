@@ -29,11 +29,27 @@ fun SchoolDetailCard(
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = schoolDetail.dbn,
+                text = "DBN ${schoolDetail.dbn}",
                 style = MaterialTheme.typography.titleLarge,
             )
             Text(
-                text = schoolDetail.school_name,
+                text = "School Name: ${schoolDetail.school_name}",
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                text = "Test Takers: ${schoolDetail.num_of_sat_test_takers}",
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                text = "Average Score: ${schoolDetail.sat_critical_reading_avg_score}",
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                text = "Math Average Score: ${schoolDetail.sat_math_avg_score}",
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                text = "Writing Average Score: ${schoolDetail.sat_writing_avg_score}",
                 style = MaterialTheme.typography.titleMedium,
             )
         }
