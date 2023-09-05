@@ -27,6 +27,8 @@ https://github.com/tonghannteng/20230904-TonghannTeng-NYCSchools/assets/20358725
   - [Hilt](https://dagger.dev/hilt) - Easier way to incorporate Dagger DI into Android apps.
 - [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java.
 
+## Run With
+[Android Studio Iguana | 2023.2.1 Canary 1](https://androidstudio.googleblog.com/2023/08/android-studio-iguana-canary-1-now.html)
 
 ## 👨 Developed By
 
