@@ -5,9 +5,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -33,27 +33,27 @@ fun SchoolCard(
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
                 text = "DBN: ${school.dbn}",
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.body1,
             )
             Text(
                 text = "School Name: ${school.school_name}",
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.subtitle1,
             )
             Text(
-                text = "BORO:: ${school.boro}",
-                style = MaterialTheme.typography.titleMedium,
+                text = "BORO: ${school.boro}",
+                style = MaterialTheme.typography.subtitle1,
             )
             Text(
                 text = "Location: ${school.location}",
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.subtitle1,
             )
             Text(
                 text = "Phone Number: ${school.phone_number}",
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.subtitle1,
             )
             Text(
                 text = "School Email: ${school.school_email}",
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.subtitle1,
             )
         }
     }
